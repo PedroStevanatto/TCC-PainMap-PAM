@@ -45,10 +45,11 @@ export default function FormPage() {
   }
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 80 }}>
+    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 60 }}>
       <Text style={styles.title}>Questionário de triagem</Text>
+      
+      <View style={styles.v} >
 
-      {/* Pergunta 1 */}
       <Text style={styles.question}>Você tem ou já teve ansiedade?</Text>
       <RadioButton.Group
         onValueChange={(v) => handleChange("ansiedade", v)}
@@ -58,7 +59,6 @@ export default function FormPage() {
         <RadioButton.Item label="Não" value="Não" labelStyle={styles.item} color="#fff"/>
       </RadioButton.Group>
 
-      {/* Pergunta 2 */}
       <Text style={styles.question}>Você tem ou já teve depressão?</Text>
       <RadioButton.Group
         onValueChange={(v) => handleChange("depressao", v)}
@@ -68,7 +68,6 @@ export default function FormPage() {
         <RadioButton.Item label="Não" value="Não" labelStyle={styles.item} color="#fff" />
       </RadioButton.Group>
 
-      {/* Pergunta 3 */}
       <Text style={styles.question}>
         Nos últimos 30 dias, quanto tempo durou qualquer dor que você teve na mandíbula ou região temporal?
       </Text>
@@ -81,7 +80,6 @@ export default function FormPage() {
         <RadioButton.Item label="Dor estava sempre presente" value="Dor estava sempre presente" labelStyle={styles.item} color="#fff" />
       </RadioButton.Group>
 
-      {/* Pergunta 4 */}
       <Text style={styles.question}>
         Nos últimos 30 dias, você teve dor ou rigidez na sua mandíbula ao acordar?
       </Text>
@@ -93,9 +91,8 @@ export default function FormPage() {
         <RadioButton.Item label="Não" value="Não" labelStyle={styles.item} color="#fff" />
       </RadioButton.Group>
 
-      {/* Pergunta 5A */}
       <Text style={styles.question}>
-        A Mastigar alimentos duros ou consistentes mudou a dor?
+        A) Mastigar alimentos duros ou consistentes mudou a dor?
       </Text>
       <RadioButton.Group
         onValueChange={(v) => handleChange("mastigar", v)}
@@ -105,9 +102,8 @@ export default function FormPage() {
         <RadioButton.Item label="Não" value="Não" labelStyle={styles.item} color="#fff" />
       </RadioButton.Group>
 
-      {/* Pergunta 5B */}
       <Text style={styles.question}>
-        B Abrir a boca ou movimentar a mandíbula mudou a dor?
+        B) Abrir a boca ou movimentar a mandíbula mudou a dor?
       </Text>
       <RadioButton.Group
         onValueChange={(v) => handleChange("movimentarMandibula", v)}
@@ -117,9 +113,8 @@ export default function FormPage() {
         <RadioButton.Item label="Não" value="Não" labelStyle={styles.item} color="#fff" />
       </RadioButton.Group>
 
-      {/* Pergunta 5C */}
       <Text style={styles.question}>
-        C Hábitos como apertar ou ranger os dentes, ou mascar chiclete mudaram a dor?
+        C) Hábitos como apertar ou ranger os dentes, ou mascar chiclete mudaram a dor?
       </Text>
       <RadioButton.Group
         onValueChange={(v) => handleChange("habitosMandibula", v)}
@@ -129,9 +124,8 @@ export default function FormPage() {
         <RadioButton.Item label="Não" value="Não" labelStyle={styles.item} color="#fff" />
       </RadioButton.Group>
 
-      {/* Pergunta 5D */}
       <Text style={styles.question}>
-        D Outras atividades como falar, beijar ou bocejar mudaram a dor?
+        D) Outras atividades como falar, beijar ou bocejar mudaram a dor?
       </Text>
       <RadioButton.Group
         onValueChange={(v) => handleChange("outrasAtividades", v)}
@@ -141,13 +135,13 @@ export default function FormPage() {
         <RadioButton.Item label="Não" value="Não" labelStyle={styles.item} color="#fff" />
       </RadioButton.Group>
 
-      {/* Botão Enviar */}
       <TouchableOpacity
         style={styles.button}
         onPress={() => Form(respostas)}
       >
         <Text style={styles.buttonText}>ENVIAR</Text>
       </TouchableOpacity>
+    </View>
     </ScrollView>
   );
 }
@@ -156,10 +150,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: "#246296",
+    backgroundColor: "#246296"
   },
   item: {
     color: "#fff"
+  },
+  v: {
+    backgroundColor: "#4682B4",
+    padding: 20,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#fff"
   },
   title: {
     fontSize: 22,
@@ -175,13 +176,15 @@ const styles = StyleSheet.create({
     marginTop: 12
   },
   button: {
+    width: "60%",
     backgroundColor: "#2871AE",
     padding: 15,
     borderRadius: 10,
     marginTop: 30,
     alignItems: "center",
     borderWidth: 2,
-    borderColor: "#fff"
+    borderColor: "#fff",
+    alignSelf: "center"
   },
   buttonText: {
     color: "#fff",
