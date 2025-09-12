@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import FormPage from "./pages/FormPage"
 import AlertDTM from './pages/AlertDTM';
 import NaoDTM from './pages/NaoDTM';
+import Cadastro from './pages/Cadastro';
 import { StyleSheet } from "react-native";
 
 const Stack = createStackNavigator();
@@ -11,7 +12,8 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="FormPage">
+      <Stack.Navigator initialRouteName="Cadastro">
+        <Stack.Screen name="Cadastro" component={Cadastro} options={{headerStyle: styles.header, headerTitleStyle: styles.title}} />
         <Stack.Screen name="FormPage" component={FormPage} options={{headerStyle: styles.header, headerTitleStyle: styles.title}} />
         <Stack.Screen name="AlertDTM" component={AlertDTM} options={{headerStyle: styles.header, headerTitleStyle: styles.title}} />
         <Stack.Screen name="NaoDTM" component={NaoDTM} options={{headerStyle: styles.header, headerTitleStyle: styles.title}} />
