@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Dimensions, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Alert, ActivityIndicator } from 'react-native';
+import { View, Text, Dimensions, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Alert, ActivityIndicator, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '../context/AuthContext';
@@ -28,7 +28,16 @@ export default function Register() {
     return 'Ocorreu um erro ao criar a conta. Tente novamente, e veja se todos os campos foram preenchidos normalmente.';
   }
 
+  const handleUsernameChange = (text) => {
+    if (text.length > 25) {
+      Alert.alert('Usuário muito longo', 'O nome de usuário deve ter no máximo 25 caracteres.');
+      return;
+    }
+    setUsername(text);
+  };
+
   const handleRegister = async () => {
+    if (username.length > 25) return Alert.alert('Usuário muito longo', 'O nome de usuário deve ter no máximo 25 caracteres.');
     if (password !== confirm) return Alert.alert("Erro", "As senhas não coincidem!");
     setLoading(true);
 
@@ -62,14 +71,34 @@ export default function Register() {
         <Text style={styles.title}>Cadastro</Text>
 
         <Text style={styles.label}>Usuário</Text>
-        <TextInput placeholder="Digite seu nome de usuário" value={username} onChangeText={setUsername} style={styles.input} autoCapitalize="words" />
+        <TextInput
+          placeholder="Digite seu nome de usuário"
+          value={username}
+          onChangeText={handleUsernameChange}
+          style={styles.input}
+          autoCapitalize="words"
+        />
 
         <Text style={styles.label}>E-mail</Text>
-        <TextInput placeholder="Digite seu e-mail" value={email} onChangeText={setEmail} style={styles.input} keyboardType="email-address" autoCapitalize="none" />
+        <TextInput
+          placeholder="Digite seu e-mail"
+          value={email}
+          onChangeText={setEmail}
+          style={styles.input}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
 
         <Text style={styles.label}>Senha</Text>
         <View style={styles.inputRow}>
-          <TextInput placeholder="Digite sua senha" value={password} onChangeText={setPassword} secureTextEntry={!showPassword} style={styles.passwordInput} autoCapitalize="none" />
+          <TextInput
+            placeholder="Digite sua senha"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry={!showPassword}
+            style={styles.passwordInput}
+            autoCapitalize="none"
+          />
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={styles.iconPressable} activeOpacity={0.7}>
             <Ionicons name={showPassword ? 'eye-off' : 'eye'} size={22} color="#246296" />
           </TouchableOpacity>
@@ -77,7 +106,14 @@ export default function Register() {
 
         <Text style={styles.label}>Confirmar senha</Text>
         <View style={styles.inputRow}>
-          <TextInput placeholder="Confirme sua senha" value={confirm} onChangeText={setConfirm} secureTextEntry={!showConfirm} style={styles.passwordInput} autoCapitalize="none" />
+          <TextInput
+            placeholder="Confirme sua senha"
+            value={confirm}
+            onChangeText={setConfirm}
+            secureTextEntry={!showConfirm}
+            style={styles.passwordInput}
+            autoCapitalize="none"
+          />
           <TouchableOpacity onPress={() => setShowConfirm(!showConfirm)} style={styles.iconPressable} activeOpacity={0.7}>
             <Ionicons name={showConfirm ? 'eye-off' : 'eye'} size={22} color="#246296" />
           </TouchableOpacity>
