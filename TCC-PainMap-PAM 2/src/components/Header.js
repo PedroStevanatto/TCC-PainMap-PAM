@@ -87,7 +87,7 @@ export default function Header() {
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.menuItem} onPress={() => { navigation.navigate('Dicas'); toggleMenu(); }}>
-                            <Text style={styles.menuText}>Dicas e bons hábitos</Text>
+                            <Text style={styles.menuText}>Educação sobre a DTM</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.menuItem} onPress={() => { navigation.navigate('Recomendacoes'); toggleMenu(); }}>
