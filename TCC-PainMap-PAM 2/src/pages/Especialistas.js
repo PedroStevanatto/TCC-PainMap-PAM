@@ -48,6 +48,11 @@ export default function Especialistas() {
       </TouchableOpacity>
 
       <Text style={styles.title}>Profissionais disponíveis</Text>
+
+      <TouchableOpacity style={styles.map} onPress={() => navigation.navigate("Maps")}>
+        <Text style={styles.maptext}>Veja os profissionais no mapa</Text>
+      </TouchableOpacity>
+      
       <Text style={styles.subtitle}>Pesquisar por cidade ou estado</Text>
 
       <TextInput
@@ -122,6 +127,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: '5%',
   },
+  maptext: {
+    fontSize: 14,
+    color: '#fff',
+    textAlign: 'center'
+  },
   subtitle2: {
     fontSize: 16,
     color: '#fff',
@@ -148,9 +158,20 @@ const styles = StyleSheet.create({
     padding: 12,
     alignItems: 'center',
   },
+  map: {
+    backgroundColor: '#2871AE',
+    borderRadius: 8,
+    justifyContent: 'center',
+    height: 40,
+    marginHorizontal: 50,
+    marginBottom: 20,
+    marginTop: 10,
+    borderWidth: 1,
+    borderColor: '#fff'
+  },
   foto: {
-    width: 80,
-    height: 80,
+    width: 60,
+    height: 60,
     borderRadius: 40,
     marginRight: 15,
   },

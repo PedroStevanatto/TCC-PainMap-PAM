@@ -15,6 +15,7 @@ import Dicas from './src/pages/Dicas';
 import Info from './src/pages/Info';
 import Especialistas from './src/pages/Especialistas'
 import Detalhes from './src/pages/Detalhes';
+import Maps from './src/pages/Maps';
 import { View, Text } from 'react-native';
 
 const Stack = createNativeStackNavigator();
@@ -48,6 +49,7 @@ function AppRoutes() {
           <Stack.Screen name="Info" component={Info } />
           <Stack.Screen name="Especialistas" component={Especialistas } />
           <Stack.Screen name="Detalhes" component={Detalhes } />
+          <Stack.Screen name="Maps" component={Maps } />
           {profile?.is_admin && (
             <Stack.Screen name="Usuarios" component={Usuarios} />
           )}
